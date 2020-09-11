@@ -23,4 +23,5 @@ docker images
 
 - https://google-cartographer-ros.readthedocs.io/en/latest/index.html
 - https://github.com/husky/husky_cartographer_navigation
+- https://www.youtube.com/watch?v=bXNK8VTQ4zo
 - http://wiki.ros.org/cartographer
