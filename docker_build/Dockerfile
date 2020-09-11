@@ -51,7 +51,6 @@ RUN apt-get update -y && apt-get install -y python-wstool \
         && wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall \
         && wstool update -t src \
         && src/cartographer/scripts/install_proto3.sh \
-        && rosdep init \
         && rosdep update \
         && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y \
         && catkin_make_isolated --install --use-ninja
