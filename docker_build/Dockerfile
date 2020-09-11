@@ -40,10 +40,25 @@ RUN echo -e "\nparse_git_branch() {\n git branch 2> /dev/null | sed -e '/^[^*]/d
         && echo -e "\nPS1='🐳\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]\$(parse_git_branch)\[\033[00m\]\$ '" >> ~/.bashrc \
         && sed -ie 's|#    . /etc/bash_completion|. /etc/bash_completion|g' ~/.bashrc 
 
-# Source ROS
-RUN echo -e "\nsource /opt/ros/\$ROS_DISTRO/setup.bash" >> ~/.bashrc
+# Installing cartographer
+RUN apt-get update -y && apt-get install -y python-wstool \
+        python-rosdep \
+        ninja-build \
+        && cd ~ \
+        && mkdir catkin_ws \
+        && cd catkin_ws \
+        && wstool init src \
+        && wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall \
+        && wstool update -t src \
+        && src/cartographer/scripts/install_proto3.sh \
+        && rosdep init \
+        && rosdep update \
+        && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y \
+        && catkin_make_isolated --install --use-ninja
 
-#
+# Source ROS and cartographer
+RUN echo -e "\nsource /opt/ros/\$ROS_DISTRO/setup.bash" >> ~/.bashrc \
+        && echo -e "source ~/catkin_ws/install_isolated/setup.bash" >> ~/.bashrc
 
 # config & cleanup
 RUN apt-get autoclean -y && \
