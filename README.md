@@ -19,6 +19,17 @@ docker images
 # ubuntu18.04         cartographer           7f732da32ca9        5 minutes ago       3.03GB
 ```
 
+## Starting the Container
+Run the `start_docker_container.bash` inside the `scripts` directory.  
+It will automatically start the `ubuntu18.04:cartographer` image container.  
+Please provide a name to the newly started container.  
+```
+cd scripts
+./start_docker_container.bash
+# Provide a name
+# Starting container image ubuntu18.04:cartographer
+# Container name: my_container
+```
 ## Reference
 
 - https://google-cartographer-ros.readthedocs.io/en/latest/index.html
