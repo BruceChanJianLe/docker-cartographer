@@ -11,6 +11,7 @@ docker build --tag="ubuntu18.04:cartographer" .
 ```
 
 ## Viewing Docker Images
+
 Run the following commands to view if the image is built correctly.  
 ```bash
 docker images
@@ -20,16 +21,31 @@ docker images
 ```
 
 ## Starting the Container
+
 Run the `start_docker_container.bash` inside the `scripts` directory.  
 It will automatically start the `ubuntu18.04:cartographer` image container.  
 Please provide a name to the newly started container.  
-```
+```bash
 cd scripts
 ./start_docker_container.bash
 # Provide a name
 # Starting container image ubuntu18.04:cartographer
 # Container name: my_container
 ```
+
+## Connecting to the Container
+
+Run the `connect_docker_container.bash` inside the `scripts` directory.  
+Please provide the name of container you wish to connect to.  
+```bash
+cd scripts
+./connect_docker_container.bash
+# Output
+# List of containers:
+# 0) my_container
+# Container name to be connected:
+```
+
 ## Reference
 
 - https://google-cartographer-ros.readthedocs.io/en/latest/index.html
