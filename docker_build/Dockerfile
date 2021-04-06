@@ -47,14 +47,20 @@ RUN echo -e "\nsource /opt/ros/\$ROS_DISTRO/setup.bash" >> ~/.bashrc
 RUN apt-get update -y && apt-get install -y python-wstool \
         python-rosdep \
         ninja-build \
+        stow \
         && mkdir -p ~/catkin_ws/src \
         && cd ~/catkin_ws \
         && wstool init src \
         && wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall \
         && wstool update -t src \
-        && src/cartographer/scripts/install_proto3.sh \
+        && rosdep init \
+        && rosdep update \
+        # Only needed for Ubuntu 16
+        # && src/cartographer/scripts/install_proto3.sh \
         && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y \
+        && src/cartographer/scripts/install_abseil.sh \
         && source /opt/ros/${ROS_DISTRO}/setup.bash \
+        && apt-get remove ros-${ROS_DISTRO}-abseil-cpp \
         && catkin_make_isolated --install --use-ninja
 
 # Source Cartographer
