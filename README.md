@@ -70,7 +70,7 @@ cd scripts
 # Container name to be connected:
 ```
 
-## Using in move_base costmap
+## Using in move_base Costmap
 
 While cartographer is great for 2d slam, its integration with ROS move_base is not very straight forward when it comes to costmap. Sometimes you see an obstacle but move_base seems to directly ignore it. This happens when the obstacle is not grey in costmap, which only letha obstacle is enlarged with obstacle radius. This problem cause issue not only for navigation but also exploration. Hence, below are some hack and trick for making the map better.
 
