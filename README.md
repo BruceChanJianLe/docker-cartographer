@@ -114,3 +114,7 @@ if(value > 50){
 - https://github.com/husky/husky_cartographer_navigation
 - https://www.youtube.com/watch?v=bXNK8VTQ4zo
 - http://wiki.ros.org/cartographer
+
+## Learning Resources
+
+- https://www.youtube.com/watch?v=L51S2RVu-zc
