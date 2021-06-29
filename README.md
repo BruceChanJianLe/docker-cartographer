@@ -88,6 +88,24 @@ if (intensity_value == 0 && alpha_value > 0) {
 }
 ```
 
+If you want a clearer and stricter costmap, you can also edit the msg_conversion file.
+
+```bash
+find . -name msg_conversion.cc
+cd cartographer_ros/cartographer_ros/cartographer_ros
+```
+
+```cpp
+int value =
+    observed == 0
+        ? -1
+        : ::cartographer::common::RoundToInt((1. - color / 255.) * 100.);
+if(value > 50){
+    value = 100;
+}
+```
+
+
 [reference link](https://github.com/cartographer-project/cartographer/issues/1498#issuecomment-464308882)
 
 ## Reference
