@@ -108,6 +108,12 @@ if(value > 50){
 
 [reference link](https://github.com/cartographer-project/cartographer/issues/1498#issuecomment-464308882)
 
+## Error
+
+RViz error ` "Update area outside of original map area."`. please also refer to [util_tool](https://github.com/BruceChanJianLe/util_display_map_info) to debug the map message. 
+
+[link](https://github.com/cartographer-project/cartographer/issues/1498)
+
 ## Reference
 
 - https://google-cartographer-ros.readthedocs.io/en/latest/index.html
