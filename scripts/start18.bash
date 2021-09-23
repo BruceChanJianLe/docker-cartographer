@@ -9,4 +9,5 @@ docker run -d -ti \
     --net=host \
     --name $CONTAINERNAME \
     --cap-add=SYS_PTRACE \
+    --restart unless-stopped \
     ubuntu18.04:cartographer
