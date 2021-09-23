@@ -13,11 +13,11 @@ then
     if [[ -z $value || $value == y || $value == Y ]]
     then
         # Build with costmap enchance
-        read -p "Would you like to build with costmap enchance[Y/n]?" enchance
-        if [[ -z $enchance || $enchance == y || $enchance == Y ]]
+        read -p "Would you like to build with costmap enhance[Y/n]?" enhance
+        if [[ -z $enhance || $enhance == y || $enhance == Y ]]
         then
             user_id=$(id -u)
-            docker build --rm -t "ubuntu18.04:cartographer" --build-arg user_id=$user_id -f ../docker_build/u18/enchance/Dockerfile .
+            docker build --rm -t "ubuntu18.04:cartographer" --build-arg user_id=$user_id -f ../docker_build/u18/enhance/Dockerfile .
         else
             user_id=$(id -u)
             docker build --rm -t "ubuntu18.04:cartographer" --build-arg user_id=$user_id -f ../docker_build/u18/normal/Dockerfile .
